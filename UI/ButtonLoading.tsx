@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, TouchableOpacity, StyleSheet, ButtonProps} from 'react-native';
+import {Text, TouchableOpacity, StyleSheet, ButtonProps, ActivityIndicator} from 'react-native';
 
 import { useThemeColor } from '@/hooks/useThemeColor';
 
@@ -13,7 +13,7 @@ export type ThemedTextProps = ButtonProps & {
   textStyle?: any;
 };
 
-export function Button({
+export function ButtonLoading({
   style,
   lightColor,
   darkColor, title, onPress, textStyle, disabled = false,
@@ -34,6 +34,7 @@ export function Button({
           disabled={disabled}
           {...rest}
       >
+        <ActivityIndicator color="#ffffff"/>
         <Text style={[{color},styles.buttonText, textStyle]}>
           {title}
         </Text>
@@ -43,6 +44,8 @@ export function Button({
 
 const styles = StyleSheet.create({
   button: {
+    flexDirection: 'row',
+    gap: 10,
     width: '100%',
     height: 44,
     borderRadius: 4,
@@ -50,9 +53,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonText: {
-    fontFamily: 'Inter-Bold',
     color: '#fff',
     fontSize: 13,
+    fontWeight: 700,
   },
   disabledButton: {
     backgroundColor: '#C3C3C3',

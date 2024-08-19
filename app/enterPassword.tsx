@@ -4,35 +4,35 @@ import {ThemedText} from "@/UI/ThemedText";
 import {PhoneInput} from "@/UI/PhoneInput";
 import React, {useState} from "react";
 import {Checkbox} from "@/UI/Checkbox";
-import {Link, router} from "expo-router";
+import {Link} from "expo-router";
 import {Button} from "@/UI/Button";
 import {ThemedPagesContainer} from "@/components/ThemedPagesContainer";
 import {ButtonLoading} from "@/UI/ButtonLoading";
 import {ThemedLink} from "@/UI/ThemedLink";
+import {PasswordInput} from "@/UI/PasswordInput";
 
 
-export default function PhoneRegistration() {
-	const [isChecked, setIsChecked] = useState(false);
+export default function EnterPassword() {
+ const [password, setPassword] = useState('');
 
-	function toggleCheckbox() {
-		setIsChecked(!isChecked);
-	}
+ function onChangeText(text: string) {
+	setPassword(text);
+ }
 	function onNext() {
-		router.push({ pathname: '/enterPassword', params: { user: 'jane' } });
+
 	}
 
 	return (
 		<ThemedPagesContainer >
 			<ThemedView style={styles.containerTop}>
-				<ThemedText type={'title'} style={styles.title}>Добро пожаловать</ThemedText>
 				<ThemedText typeColor={'textVeryLightGray'} style={styles.textInstr}>
-					Для авторизации, введите свой номер телефона
+					Введите пароль с которым вы регистрировались на сайте
 				</ThemedText>
 				<PhoneInput/>
 				<View style={styles.agreement}>
-					<Checkbox isChecked={isChecked} onToggle={toggleCheckbox}/>
-					<ThemedText style={styles.textAgreement}>Я согласен с
-						<ThemedLink href={'./'} style={styles.textAgreementLink} text={'с условиями использования'}/>
+          <PasswordInput value={password} onChangeText={onChangeText}/>
+					<ThemedText style={styles.textAgreement}>Забыли пароль?
+						<ThemedLink href={'./'} style={styles.textAgreementLink} text={'Востановить пароль'}/>
 					</ThemedText>
 				</View>
 				<ThemedLink href={'./'} style={styles.textCooperation} text={'Сотрудничество для парков и партнеров'}
