@@ -31,7 +31,7 @@ export default function WelcomeWindow(
             resizeMode="contain"
         />
         {loading ? (<LoadingBar duration={duration} durationStep={durationStep}/>)
-            : (<ThemedText>
+            : (<ThemedText style={styles.welcomeText}>
                 Добро пожаловать, партнер!
             </ThemedText>)
         }
@@ -69,5 +69,12 @@ const styles = StyleSheet.create({
     imgTaxi: {
         maxWidth: '100%'
     },
-    buttonContainer: {}
+    buttonContainer: {
+        width: '100%'
+    },
+    welcomeText: {
+        fontSize: 20,
+     fontWeight: '700',
+        textAlign: 'center',
+    }
 });

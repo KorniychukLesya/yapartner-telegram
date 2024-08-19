@@ -104,12 +104,10 @@ export const PhoneInput = () => {
                 value={phone}
                 onChangeText={(masked, unmasked) => {
                     setPhone(masked); // you can use the unmasked value as well
-
-                    // assuming you typed "9" all the way:
-                    console.log(masked); // (99) 99999-9999
-                    console.log(unmasked); // 99999999999
                 }}
                 mask={[ '(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, ' ', /\d/, /\d/]}
+                placeholderFillCharacter={'X'}
+                style={phone.length > 11 ? styles.maskedInputFull : styles.maskedInput}
             />
         </View>
     );
@@ -121,6 +119,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 8,
         alignItems: 'center',
+        width: '100%',
         borderColor: '#ccc',
         borderWidth: 1,
         borderRadius: 12,
@@ -132,24 +131,26 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 8,
         alignItems: 'center',
-
     },
 
     maskedInput: {
-        borderWidth: 2,
-        borderRadius: 6,
-        width: '80%',
-        padding: 12,
-        color: 'black',
-        fontSize: 20
+        color: '#A5A5A5',
+        fontSize: 14,
+        fontWeight: 400
+    },
+    maskedInputFull: {
+        color: '#0A0A17',
+        fontSize: 14,
+        fontWeight: 400
     },
     countryPicker: {
         width: '80%'
     },
-    selectIcon: {
-display: 'flex',
 
+    selectIcon: {
+      display: 'flex',
     },
+
     phone: {
         fontSize: 14,
         fontWeight: 400
